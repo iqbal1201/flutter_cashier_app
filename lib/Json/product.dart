@@ -68,6 +68,6 @@ class Product {
         "price": price,
         "stock": stock,
         "image": image,
-        "isCompleted": isCompleted,
+        "isCompleted": isCompleted ? 1 : 0,
     };
 }

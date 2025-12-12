@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cashier_app/View/faq_chat_page.dart';
 import 'package:cashier_app/View/product_purchase.dart';
 import 'package:cashier_app/const.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,14 @@ class _ProductViewState extends State<ProductView> {
   final TextEditingController _searchController = TextEditingController();
 
   Future<void> _scanBarcode() async {
+    if (!(Platform.isAndroid || Platform.isIOS)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Barcode scan is only available on mobile devices.'),
+        ),
+      );
+      return;
+    }
     try {
       var result = await BarcodeScanner.scan();
       if (result.rawContent.isNotEmpty) {
@@ -132,6 +141,20 @@ class _ProductViewState extends State<ProductView> {
           ),
           appBar: AppBar(
             title: const Text('Products'),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.question_answer_outlined),
+                tooltip: 'FAQ Chatbot',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FaqChatPage(),
+                    ),
+                  );
+                },
+              ),
+            ],
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(48.0),
               child: Padding(

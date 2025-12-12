@@ -1,5 +1,7 @@
 import 'dart:io';
+
 import 'package:cashier_app/Json/product.dart';
+import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -82,8 +84,9 @@ class DatabaseHelper {
   // Save image to storage
   Future<String> saveImage(File imageFile) async {
     final appDir = await getApplicationDocumentsDirectory();
-    final fileName = imageFile.path.split('/').last;
-    final savedImage = await imageFile.copy('${appDir.path}/$fileName');
+    final fileName = p.basename(imageFile.path);
+    final destination = p.join(appDir.path, fileName);
+    final savedImage = await imageFile.copy(destination);
     return savedImage.path;
   }
 }

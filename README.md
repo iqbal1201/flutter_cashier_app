@@ -11,6 +11,7 @@ Features:
 - Barcode scan for product purchase.
 - Automatically calculates total price.
 - Automatic stock update on purchase.
+- Built-in FAQ chatbot powered by Gemini (run with `--dart-define=GEMINI_API_KEY=YOUR_KEY`).
 
 ## installation
 install
@@ -19,6 +20,8 @@ git clone https://github.com/rizmulya/cashier_app
 cd cashier_app
 flutter pub get
 flutter run
+# or include the chatbot
+flutter run --dart-define=GEMINI_API_KEY=YOUR_KEY
 ```
 
 customizable:
