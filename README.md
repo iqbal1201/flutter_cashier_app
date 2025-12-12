@@ -37,8 +37,3 @@ flutter build apk --release
 ## license
 
 This project is under the [MIT license](https://opensource.org/license/mit) 
-
-credits
-- [rizmulya](https://github.com/rizmulya) 
-- [uwayxt](https://dribbble.com/WahyudiID)
-- rifqi
